@@ -10,12 +10,12 @@ import (
 
 var logger = log.New(os.Stderr, "httpsproxy:", log.Llongfile|log.LstdFlags)
 
-func main(){
+func main() {
 	var listenAdress string
 	flag.StringVar(&listenAdress, "L", "0.0.0.0:8080", "listen address.eg: 127.0.0.1:8080")
 	flag.Parse()
 
-	if !checkAdress(listenAdress){
+	if !checkAdress(listenAdress) {
 		logger.Fatal("-L listen address format incorrect.Please check it")
 	}
 
@@ -23,11 +23,10 @@ func main(){
 
 }
 
-func checkAdress(adress string) bool{
+func checkAdress(adress string) bool {
 	_, err := net.ResolveTCPAddr("tcp", adress)
-	if err != nil{
+	if err != nil {
 		return false
 	}
 	return true
-
 }
